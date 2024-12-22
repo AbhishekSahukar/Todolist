@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -97,3 +98,64 @@
             color: #333;
         }
     
+=======
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: whitesmoke;
+}
+h1,h2{
+    text-align: center;
+}
+.input-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+#input-todo{
+    width: 250px;
+    height: 25px;
+    font-size: 1.25rem;
+}
+#add-todo{
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    border: none;
+    background-color: aquamarine;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.todo-container{
+
+    width: 80vw;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.todo {
+    background-color:lightsteelblue;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   border-radius: 10px;
+   padding: 0px 10px; 
+   font-size: 1.2rem;
+
+}
+.actions>form{
+    display: inline;
+}
+.actions > form > button{
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+>>>>>>> 9a8ac78c74adb32a810bf35c4eb4c6b4af6c6ebf
