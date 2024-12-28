@@ -5,65 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo List</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-<<<<<<< HEAD
-    
-=======
->>>>>>> 9a8ac78c74adb32a810bf35c4eb4c6b4af6c6ebf
 </head>
 <body>
-    <h1>ToDo List</h1>
-
-<<<<<<< HEAD
-    <!-- Form to Add Todos -->
-=======
->>>>>>> 9a8ac78c74adb32a810bf35c4eb4c6b4af6c6ebf
-    <form action="{{ url_for('home') }}" method="post" class="input-container">
-        <input type="text" placeholder="Enter Todo" id="input-todo" name="todo_name" required>
-        <button id="add-todo" type="submit">+</button>
-    </form>
-<<<<<<< HEAD
-
-    <h2>Todos</h2>
-
-    <!-- Display Todos -->
-=======
-    <h2>Todos</h2>
->>>>>>> 9a8ac78c74adb32a810bf35c4eb4c6b4af6c6ebf
-    <div class="todo-container">
-        {% for item in items %}
-        <div class="todo">
-            <p>{{ item.name }}</p>
-            <div class="actions">
-<<<<<<< HEAD
-                <!-- Form to Check/Uncheck Todo -->
-                <form action="{{ url_for('checked_todo', todo_id=item.id) }}" method="post">
-                    <input type="checkbox" {% if item.checked %}checked{% endif %} onchange="this.form.submit()">
-                </form>
-
-                <!-- Form to Delete Todo -->
-                <form action="{{ url_for('delete_todo', todo_id=item.id) }}" method="post">
-                    <button>Delete</button>
-                </form>
-=======
-                <form action="{{ url_for('checked_todo', todo_id=item.id)}}" method="post">
-                    <input type="checkbox" {% if item.checked %}checked{% endif %} onchange= "this.form.submit()">
-                </form>
-                <form action="{{ url_for('delete_todo', todo_id=item.id)}}" method="post">
-                    <button>Delete</button>
-                </form>
-
-
->>>>>>> 9a8ac78c74adb32a810bf35c4eb4c6b4af6c6ebf
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-<<<<<<< HEAD
-</body>
-</html>
-=======
-
-</body>
-</html>
+    <h1>Welcome, {{ username }}</h1>
     
->>>>>>> 9a8ac78c74adb32a810bf35c4eb4c6b4af6c6ebf
+    <form action="{{ url_for('home') }}" method="post">
+        <input id="input-todo" type="text" name="todo_name" placeholder="Enter Todo" required>
+        <button id="add-todo" type="submit">Add Todo</button>
+    </form>
+    <h2>Your Todos</h2>
+    <ul class="todo-container">
+        {% for item in items %}
+        <li class="todo">
+            <form action="{{ url_for('checked_todo', todo_id=item.id) }}" method="post">
+                <input type="checkbox" {% if item.checked %}checked{% endif %} onchange="this.form.submit()">
+            </form>
+            {{ item.name }}
+            <form class="actions" action="{{ url_for('delete_todo', todo_id=item.id) }}" method="post">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>

@@ -1,0 +1,104 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Welcome Heading */
+.welcome-heading {
+    font-size: 2rem;
+    color: #333;
+    margin-top: 20px;  /* Space from top */
+    margin-bottom: 20px;  /* Space before form */
+    text-align: center;
+}
+
+/* Form Container */
+.form-container {
+    background: #ffffff;
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Form Header */
+form h2 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+/* Error Message */
+.error-message {
+    color: #ff0000;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 1rem;
+}
+
+/* Input Group */
+.input-group {
+    margin-bottom: 1rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #666;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #5cb85c;
+    box-shadow: 0 0 5px rgba(92, 184, 92, 0.5);
+}
+
+/* Submit Button */
+.btn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #4cae4c;
+}
+
+/* Redirect Link */
+.redirect {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.redirect a {
+    color: #5cb85c;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.redirect a:hover {
+    text-decoration: underline;
+}
