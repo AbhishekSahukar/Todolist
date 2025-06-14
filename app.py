@@ -4,24 +4,28 @@ from flask_jwt_extended import JWTManager, create_access_token, jwt_required, ge
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import timedelta
 from flask_migrate import Migrate
-import psycopg, psycopg2
-import secrets
-secret_key = secrets.token_hex(32)
-print(secret_key)
+import os
+from dotenv import load_dotenv
 
+# Load environment variables from .env file
+load_dotenv()
 
+# Initialize Flask app
 app = Flask(__name__)
 
-
-app.secret_key = '9eb55fdc43b12894b2e95c1d49d8b44bc171402a6ff32e7b4b747a5c6f3e8efe'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:081205@localhost:5432/todo_db'
+# Load secrets and configuration from environment
+app.secret_key = os.getenv('SECRET_KEY')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['JWT_SECRET_KEY'] = '7f8b5892bd224d41b7577911fb4cf499c13335d442fad2443b5615a19a2e8d7a'
+app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY')
 
+# Initialize extensions
 db = SQLAlchemy(app)
 jwt = JWTManager(app)
+migrate = Migrate(app, db)
 
 
+# Models
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), unique=True, nullable=False)
@@ -39,6 +43,7 @@ class Todo(db.Model):
     checked = db.Column(db.Boolean, default=False)
 
 
+# Routes
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
@@ -57,6 +62,7 @@ def signup():
         return redirect(url_for("login"))
     return render_template("signup.html")
 
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -67,9 +73,8 @@ def login():
         if not user or not check_password_hash(user.password, password):
             return render_template("login.html", error="Invalid email or password")
 
-        # Store the username in the session
         session['user_id'] = user.id
-        session['username'] = user.username  # Save the username, not email
+        session['username'] = user.username
         return redirect(url_for("home"))
     return render_template("login.html")
 
@@ -78,6 +83,7 @@ def login():
 def logout():
     session.clear()
     return redirect(url_for("login"))
+
 
 @app.route("/", methods=["GET", "POST"])
 @jwt_required(optional=True)
@@ -106,6 +112,7 @@ def checked_todo(todo_id):
     db.session.commit()
     return redirect(url_for("home"))
 
+
 @app.route("/delete_todo/<int:todo_id>", methods=["POST"])
 def delete_todo(todo_id):
     user_id = session.get('user_id')
@@ -115,12 +122,10 @@ def delete_todo(todo_id):
     return redirect(url_for("home"))
 
 
-
-
-
-
+# Create tables if not already created
 with app.app_context():
     db.create_all()
 
+# Run the app
 if __name__ == "__main__":
     app.run(debug=True)
