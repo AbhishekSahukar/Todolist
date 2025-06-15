@@ -62,16 +62,16 @@ python app.py
 ### Screenshhots ###
 
 ### Login Page
-![Login Page](assets/Login.png)
+![Login Page](Assets/Login.png)
 
 ### Adding todo 
-![Add todo](assets/Addtodo.png)
+![Add todo](Assets/Addtodo.png)
 
 ### Added todo
-![Added todo](assets/Addedtodo.png)
+![Added todo](Assets/Addedtodo.png)
 
 ### Checked todo
-![Add todo](assets/Checkedtodo.png)
+![Add todo](Assets/Checkedtodo.png)
 
 License
 MIT © Abhishek Sahukar
