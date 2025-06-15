@@ -6,6 +6,7 @@ from datetime import timedelta
 from flask_migrate import Migrate
 import os
 from dotenv import load_dotenv
+import psycopg
 
 # Load environment variables from .env file
 load_dotenv()
