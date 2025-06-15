@@ -26,51 +26,51 @@ A full-stack Todo application built with Flask, PostgreSQL, and JWT authenticati
 | Migrations    | Flask-Migrate            |
 | Templates     | HTML + Jinja2            |
 
-##  Setup Instructions
+###  Setup Instructions
 
-### 1️ Clone the Repo
+## 1️ Clone the Repo
 
 bash
 git clone https://github.com/YOUR_USERNAME/flask-todo-app.git
 cd flask-todo-app
 
-### 2️ Create a Virtual Environment
+## 2️ Create a Virtual Environment
 
 python -m venv venv
 source venv/bin/activate    # Windows: venv\Scripts\activate
 
-### 3 Install Dependencies
+## 3 Install Dependencies
 
 pip install -r requirements.txt
 
-### 4 Set Up PostgreSQL
+## 4 Set Up PostgreSQL
 
 Make sure PostgreSQL is running.
 CREATE DATABASE todo_db;
 
-### 5️ Configure Environment Variables
+## 5️ Configure Environment Variables
 
 #.env
 SECRET_KEY=your_flask_secret
 SQLALCHEMY_DATABASE_URI=postgresql://postgres:your_password@localhost:5432/todo_db
 JWT_SECRET_KEY=your_jwt_secret
 
-### 6️ Run the App
+## 6️ Run the App
 
 python app.py
 
-### Screenshhots ###
+## Screenshhots ###
 
-### Login Page
+## Login Page
 ![Login Page](Assets/Login.png)
 
-### Adding todo 
+## Adding todo 
 ![Add todo](Assets/Addtodo.png)
 
-### Added todo
+## Added todo
 ![Added todo](Assets/Addedtodo.png)
 
-### Checked todo
+## Checked todo
 ![Add todo](Assets/Checkedtodo.png)
 
 License
